@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		634133CD2BC067D8001EA6D2 /* SavedTranslation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634133CC2BC067D8001EA6D2 /* SavedTranslation.swift */; };
 		63B8DEAC2BBE1CB800168A28 /* TranslateMeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B8DEAB2BBE1CB800168A28 /* TranslateMeApp.swift */; };
 		63B8DEB02BBE1CBA00168A28 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63B8DEAF2BBE1CBA00168A28 /* Assets.xcassets */; };
 		63B8DEB32BBE1CBA00168A28 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63B8DEB22BBE1CBA00168A28 /* Preview Assets.xcassets */; };
@@ -15,9 +16,12 @@
 		63B8DEC02BBE1E0300168A28 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 63B8DEBF2BBE1E0300168A28 /* FirebaseFirestoreSwift */; };
 		63B8DEC22BBE1FEA00168A28 /* TranslatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B8DEC12BBE1FEA00168A28 /* TranslatorView.swift */; };
 		63B8DEC52BBE220600168A28 /* Translation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B8DEC42BBE220600168A28 /* Translation.swift */; };
+		63B8DEC82BBF07B100168A28 /* TranslationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B8DEC72BBF07B100168A28 /* TranslationsView.swift */; };
+		63B8DECB2BBF504F00168A28 /* TranslationCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B8DECA2BBF504F00168A28 /* TranslationCard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		634133CC2BC067D8001EA6D2 /* SavedTranslation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedTranslation.swift; sourceTree = "<group>"; };
 		63B8DEA82BBE1CB800168A28 /* TranslateMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TranslateMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63B8DEAB2BBE1CB800168A28 /* TranslateMeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateMeApp.swift; sourceTree = "<group>"; };
 		63B8DEAF2BBE1CBA00168A28 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -25,6 +29,8 @@
 		63B8DEB92BBE1D5100168A28 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		63B8DEC12BBE1FEA00168A28 /* TranslatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslatorView.swift; sourceTree = "<group>"; };
 		63B8DEC42BBE220600168A28 /* Translation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Translation.swift; sourceTree = "<group>"; };
+		63B8DEC72BBF07B100168A28 /* TranslationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationsView.swift; sourceTree = "<group>"; };
+		63B8DECA2BBF504F00168A28 /* TranslationCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationCard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +68,7 @@
 			children = (
 				63B8DEAB2BBE1CB800168A28 /* TranslateMeApp.swift */,
 				63B8DEC32BBE206900168A28 /* Models */,
+				63B8DEC92BBF502C00168A28 /* Components */,
 				63B8DEC62BBE224F00168A28 /* Screens */,
 				63B8DEAF2BBE1CBA00168A28 /* Assets.xcassets */,
 				63B8DEB92BBE1D5100168A28 /* GoogleService-Info.plist */,
@@ -89,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				63B8DEC42BBE220600168A28 /* Translation.swift */,
+				634133CC2BC067D8001EA6D2 /* SavedTranslation.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -97,8 +105,17 @@
 			isa = PBXGroup;
 			children = (
 				63B8DEC12BBE1FEA00168A28 /* TranslatorView.swift */,
+				63B8DEC72BBF07B100168A28 /* TranslationsView.swift */,
 			);
 			path = Screens;
+			sourceTree = "<group>";
+		};
+		63B8DEC92BBF502C00168A28 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				63B8DECA2BBF504F00168A28 /* TranslationCard.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -179,8 +196,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63B8DECB2BBF504F00168A28 /* TranslationCard.swift in Sources */,
+				634133CD2BC067D8001EA6D2 /* SavedTranslation.swift in Sources */,
 				63B8DEC22BBE1FEA00168A28 /* TranslatorView.swift in Sources */,
 				63B8DEAC2BBE1CB800168A28 /* TranslateMeApp.swift in Sources */,
+				63B8DEC82BBF07B100168A28 /* TranslationsView.swift in Sources */,
 				63B8DEC52BBE220600168A28 /* Translation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

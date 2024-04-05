@@ -6,12 +6,17 @@
 //
 
 import SwiftUI
+import Firebase
+import FirebaseFirestore  // Import FirebaseFirestore
 
 struct TranslatorView: View {
     
-    @State private var textFieldInput = ""
+    @State private var textToBeTranslated = ""
     @State private var translation = ""
     @State private var selectedLanguage = "French"
+    
+    // Firestore instance
+    let db = Firestore.firestore()
     
     // string keys representing the language codes and string values representing the corresponding language names
     let languageDictionary: [String: String] = [
@@ -50,7 +55,7 @@ struct TranslatorView: View {
                     
                     
                 // TextField for user input
-                TextField("Enter text", text: $textFieldInput)
+                TextField("Enter text", text: $textToBeTranslated)
                     .padding()
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                 
@@ -59,6 +64,9 @@ struct TranslatorView: View {
                 Button(action: {
                     Task {
                         await fetchTranslation()
+                        
+                        // After translation is fetched, save to Firestore
+                        await saveTranslationToFirestore()
                     }
                 }) {
                     Text("Translate")
@@ -77,12 +85,14 @@ struct TranslatorView: View {
                         .cornerRadius(8.0)
                         .font(.system(size: 30))
                         .bold()
+                        .opacity(translation.isEmpty ? 0 : 1) // Hide text when translation is empty
+                        .animation(.easeInOut(duration: 0.5)) // Add fade animation
                     
             
                     }
                 
                 // Button to view saved translations
-                Button(action: {}) {
+                NavigationLink(destination: TranslationsView()) {
                     Text("View Saved Translations")
                         .padding()
                 
@@ -99,7 +109,7 @@ struct TranslatorView: View {
     private func fetchTranslation() async {
         // API endpoint parameters
         let targetLang = findLanguageCode()
-        let textToBeTranslated = textFieldInput
+        let textToBeTranslated = textToBeTranslated
         
         // URL for API Endpoint
         let url = URL(string: "https://api.mymemory.translated.net/get?q=\(textToBeTranslated)&langpair=en|\(targetLang)")!
@@ -130,8 +140,24 @@ struct TranslatorView: View {
         } else {
             return "fr"     // default target language is "fr" for French
         }
-        
+    }
     
+    // saves translation to Firestore
+    private func saveTranslationToFirestore() async {
+        do {
+                 let data: [String: Any] = [
+                     "selectedLanguage": selectedLanguage,
+                     "textToBeTranslated": textToBeTranslated,
+                     "translation": translation,
+                     "createdAt ": Date()
+                 ]
+                 
+                 // Add a new document with a generated ID
+                 _ = try await db.collection("translations").addDocument(data: data)
+                 print("Translation saved to Firestore")
+             } catch {
+                 print("Error saving translation to Firestore: \(error)")
+             }
     }
 }
 

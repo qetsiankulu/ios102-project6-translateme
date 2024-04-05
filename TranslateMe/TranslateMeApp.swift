@@ -8,6 +8,7 @@
 import SwiftUI
 import FirebaseCore             // <-- Import Firebase
 
+
 @main
 struct TranslateMeApp: App {
     
